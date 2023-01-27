@@ -1,6 +1,6 @@
 {
 	"manifest_version": 2,
-	"name": "Kurotodon (財団版)",
+	"name": "Kurotodon財団版",
 	"version": "0.3.21",
 	"author": "Yakumo Saki (original kurotodon by KEN1)",
 	"description": "__MSG_manifest_description__",
