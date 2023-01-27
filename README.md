@@ -22,4 +22,4 @@ Screenshot
 
 Installation
 =============
-・[ウェブストアからインストール](https://chrome.google.com/webstore/detail/kurotodon/fandjchmgmejjcjcedgeoileeibjndbb)  
+・[(オリジナルのkurotodon)ウェブストアからインストール](https://chrome.google.com/webstore/detail/kurotodon/fandjchmgmejjcjcedgeoileeibjndbb)  
