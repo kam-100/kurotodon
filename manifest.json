@@ -5,6 +5,9 @@
 	"author": "Yakumo Saki (original kurotodon by KEN1)",
 	"description": "__MSG_manifest_description__",
 	"default_locale": "ja",
+
+	"homepage_url": "https://github.com/yakumo-saki/kurotodon/",
+
 	"content_security_policy": {
 		"extension_pages" : "script-src 'self'; object-src 'self'"
 	},

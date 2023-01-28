@@ -406,7 +406,7 @@ function Init()
 						}
 					);
 				}
-				
+
 				GetAccountInfo();
 			}
 		}
@@ -743,7 +743,7 @@ function Init()
 		{
 			if ( e.keyCode == 37 || e.keyCode == 39 )
 			{
-				
+
 				$( 'panel' ).find( 'div.contents.image' ).trigger( 'keyevent', [e] );
 				return;
 			}
@@ -1100,7 +1100,7 @@ function SetFont( formflg )
 			} )
 		}
 	}
-	
+
 	// パネルのデフォルトサイズをフォントサイズをベースにする
 	g_defwidth = g_cmn.cmn_param.font_size * 30;
 	g_defheight = g_cmn.cmn_param.font_size * 30;
@@ -1579,7 +1579,7 @@ function SendRequest( req, callback )
 					client_name: manifest.name,
 					redirect_uris: 'urn:ietf:wg:oauth:2.0:oob',
 					scopes: 'read write follow',
-					website: 'https://github.com/oken1/kurotodon',
+					website: manifest.homepage_url,
 				}
 			} ).done( function( data ) {
 				callback( data );
@@ -1614,7 +1614,7 @@ function SendRequest( req, callback )
 			} );
 
 			break;
-	
+
 		case 'api_call':
 			var query = '';
 
@@ -1627,7 +1627,7 @@ function SendRequest( req, callback )
 			}
 
 			var url = 'https://' + req.instance + '/api/v1/' + req.api;
-			
+
 			if ( query.length )
 			{
 				url += '?' + query
@@ -2040,7 +2040,7 @@ function i18nGetMessage( id, options )
 				{
 					console.log( 'i18nGetMessage error [' + id + ']' );
 				}
-				
+
 				return msg;
 			}
 			else
@@ -2049,7 +2049,7 @@ function i18nGetMessage( id, options )
 				{
 					console.log( 'i18nGetMessage error [' + id + ']' );
 				}
-				
+
 				return g_message_data[id].message;
 			}
 		}
@@ -2115,7 +2115,7 @@ function ConvertContent( content, json )
 	var _index = 0;
 	var _urls = [];
 	var _types = [];
-	
+
 	_thumbnails.html( OutputTPL( 'thumbnail', {} ) );
 
 	for ( var i = 0 ; i < json.media_attachments.length ; i++ )
@@ -2124,7 +2124,7 @@ function ConvertContent( content, json )
 		{
 			continue;
 		}
-		
+
 		if ( json.media_attachments[i].text_url != null )
 		{
 			_jq.find( 'a[href="' + json.media_attachments[i].text_url + '"]' ).each( function( e ) {
@@ -2202,8 +2202,8 @@ function ConvertContent( content, json )
 
 		}
 
-		$( this ).replaceWith( $( '<a href="' + anchor.attr( 'href' ) + 
-			'" rel="nofollow noopener noreferrer" target="_blank" class="url anchor">' + 
+		$( this ).replaceWith( $( '<a href="' + anchor.attr( 'href' ) +
+			'" rel="nofollow noopener noreferrer" target="_blank" class="url anchor">' +
 			display_url + ellipsis + '</span></a>' ) );
 	} );
 
@@ -2430,7 +2430,7 @@ function DuplicateCheck( cp )
 						{
 							dupchk = i;
 						}
-						
+
 						break;
 				}
 			}
@@ -2459,12 +2459,12 @@ function DuplicateCheck( cp )
 						{
 							dupchk = i;
 						}
-						
+
 						break;
 					case 'muteusers':
 					case 'blockusers':
 						dupchk = i;
-						
+
 						break;
 				}
 			}
@@ -2475,7 +2475,7 @@ function DuplicateCheck( cp )
 	{
 		SetFront( $( '#' + g_cmn.panel[dupchk].id ) );
 	}
-	
+
 	return dupchk;
 }
 
