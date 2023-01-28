@@ -20,7 +20,7 @@ function createOrFocusTab() {
 
                     // 既に開いているウィンドウ＆タブにフォーカス
                     chrome.windows.update(wins[i].id, { focused: true });
-                    chrome.tabs.update(wins[i].tabs[j].id, { selected: true });
+                    chrome.tabs.update(wins[i].tabs[j].id, { active: true });
 
                     break;
                 }
@@ -40,7 +40,6 @@ function createOrFocusTab() {
 }
 
 chrome.action.onClicked.addListener((tab) => {
-    console.log("test");
     createOrFocusTab();
     // console.log(chrome.action);
 
