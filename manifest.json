@@ -9,7 +9,7 @@
 		"extension_pages" : "script-src 'self'; object-src 'self'"
 	},
 
-	"minimum_chrome_version": "50.0",
+	"minimum_chrome_version": "88.0",
 
 	"action": {
 		"default_icon": "images/icon128.png",
