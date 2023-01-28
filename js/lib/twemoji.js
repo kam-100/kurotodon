@@ -1,7 +1,7 @@
 /*jslint indent: 2, browser: true, bitwise: true, plusplus: true */
 var twemoji = (function (
   /*! Copyright Twitter Inc. and other contributors. Licensed under MIT *//*
-    https://github.com/twitter/twemoji/blob/gh-pages/LICENSE
+    https://github.com/jdecked/twemoji/blob/gh-pages/LICENSE
   */
 
   // WARNING:   this file is generated automatically via
@@ -23,8 +23,8 @@ var twemoji = (function (
     //      properties     //
     /////////////////////////
 
-      // default assets url, by default will be Twitter Inc. CDN
-      base: 'https://twemoji.maxcdn.com/v/14.0.2/',
+      // default assets url, by default will be jsDelivr CDN
+      base: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.0/assets/',
 
       // default assets file extensions, by default '.png'
       ext: '.png',
