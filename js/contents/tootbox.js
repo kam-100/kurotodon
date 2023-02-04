@@ -52,7 +52,6 @@ Contents.tootbox = function( cp )
 				{
 					return;
 				}
-
 				e.preventDefault();
 
 				// ファイル
@@ -85,6 +84,49 @@ Contents.tootbox = function( cp )
 			}
 		);
 
+		////////////////////////////////////////
+		// ファイルペースト時の処理
+		////////////////////////////////////////
+		cont.on( 'paste',
+			function( e ) {
+				// データなし
+				if ( !e.originalEvent.clipboardData )
+				{
+					return;
+				}
+
+				var item = e.originalEvent.clipboardData.items[0]; // ペーストは１ファイルずつのみ
+				// 画像以外
+			    if (item.type.indexOf("image") == -1) {
+			      // 何もしない
+					return;
+			    }
+
+
+				e.preventDefault();
+
+				// ファイルアップロード
+				var WaitUpload = function() {
+					if ( uploading > 0 )
+					{
+						setTimeout( WaitUpload, 100 );
+					}
+					else
+					{
+						if ( cont.find( '.imageattach' ).hasClass( 'disabled' ) )
+						{
+							return false;
+						}
+
+						AppendAttachFilePaste( item );
+						setTimeout( WaitUpload, 100 );
+					}
+				};
+
+				WaitUpload();
+			}
+		);
+		
 		////////////////////////////////////////
 		// 返信削除ボタンクリック処理
 		////////////////////////////////////////
@@ -176,6 +218,70 @@ Contents.tootbox = function( cp )
 						instance: g_cmn.account[cp.param['account_id']].instance,
 						access_token: g_cmn.account[cp.param['account_id']].access_token,
 						uploadFile: f,
+					},
+					function( res )
+					{
+						uploading--;
+
+						if ( res.status === undefined )
+						{
+							tootimages.append( OutputTPL( 'tootbox_image', { item: res } ) );
+							tootimages.attr( 'account_id', cp.param['account_id'] );
+							tootimages.find( '.del' ).last().find( 'span' ).click( ImageDelClick );
+							tootimages.find( '.imageitem' ).last().attr( 'uid', GetUniqueID() );
+
+							tootimages.find( '.imageitem' ).last().find( '> .icon > img' ).attr( 'src', res.preview_url );
+							cont.find( '.text' ).val( cont.find( '.text' ).val() + ' ' + res.text_url );
+
+							var height = tootimages.find( '.imageitem' ).last().outerHeight( true );
+
+							cont.find( '.nsfw' ).show();
+
+							if ( _itemcnt == 0 )
+							{
+								cont.height( cont.height() + height );
+								p.height( p.height() + height );
+							}
+
+							if ( tootimages.find( '.imageitem' ).length == 4 )
+							{
+								cont.find( '.imageattach' ).addClass( 'disabled' );
+							}
+						}
+						else
+						{
+							ApiError( res );
+						}
+						
+						Loading( false, 'append_attachfile' );
+						Blackout( false );
+					}
+				);
+			};
+
+			ImageFileReset();
+			cont.find( '.text' ).trigger( 'keyup' );
+		};
+		////////////////////////////////////////
+		// 添付画像を追加（ペースト）
+		////////////////////////////////////////
+		var AppendAttachFilePaste = function( f ) {
+			var tootimages = cont.find( '.tootimages' );
+			var _itemcnt = tootimages.find( '.imageitem' ).length;
+
+			if ( f.type.match( 'image.*' ) || f.type.match( 'video.*' ) )
+			{
+				Blackout( true );
+				Loading( true, 'append_attachfile' );
+
+				uploading++;
+
+				SendRequest(
+					{
+						action: 'media_upload',
+						instance: g_cmn.account[cp.param['account_id']].instance,
+						access_token: g_cmn.account[cp.param['account_id']].access_token,
+						uploadFile: f.getAsFile(),
 					},
 					function( res )
 					{
