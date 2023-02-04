@@ -226,6 +226,27 @@
 	"i18n_0157": {
 		"message": "Read more"
 	},
+    "i18n_0167": {
+        "message": "List"
+    },
+    "i18n_0168": {
+        "message": "Add to list"
+    },
+    "i18n_0169": {
+        "message": "Failed to retrieve the list."
+    },
+    "i18n_0170": {
+        "message": "Failed to create the list."
+    },
+    "i18n_0171": {
+        "message": "List name"
+    },
+    "i18n_0172": {
+        "message": "List name is too long."
+    },
+    "i18n_0173": {
+        "message": "Please enter a list name."
+    },
 
 	"i18n_0180": {
 		"message": "RSS reader setting"

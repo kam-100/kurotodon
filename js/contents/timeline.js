@@ -261,6 +261,17 @@ Contents.timeline = function( cp )
 				};
 
 				break;
+
+			// リスト
+			case 'list':
+				param = {
+					api: 'timelines/list/' + cp.param['id'],
+					data: {
+						limit: count
+					}
+				};
+
+			break;
 		}
 
 		switch ( type )
@@ -298,7 +309,6 @@ Contents.timeline = function( cp )
 		}
 
 		Loading( true, 'timeline' );
-
 		// API呼び出し
 		SendRequest(
 			{
@@ -1186,6 +1196,27 @@ Contents.timeline = function( cp )
 
 				OpenUserTimeline( cp.param['account_id'], item.attr( 'id' ), item.attr( 'username' ),
 					item.attr( 'display_name' ), item.attr( 'instance' ) );
+			}
+			////////////////////////////////////////
+			// 詳細表示クリック
+			////////////////////////////////////////
+			else if ( targ.hasClass( 'expandstatus' ) )
+			{
+				var item = targ.closest( '.item' );
+				var account_id = cp.param['account_id'];
+				var id = item.attr( 'status_id' );
+
+				var _cp = new CPanel( null, null, g_defwidth, g_defheight_l );
+				_cp.SetType( 'timeline' );
+				_cp.SetParam( {
+					account_id: cp.param['account_id'],
+					timeline_type: 'expand',
+					id: item.attr( 'status_id' ),
+					reload_time: g_cmn.cmn_param['reload_time'],
+					streaming: false,
+				} );
+				_cp.Start();
+
 			}
 			////////////////////////////////////////
 			// アイコンクリック

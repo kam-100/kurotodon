@@ -39,6 +39,7 @@
 
 				<div class='options' mytoot='{$mytoot}' reblogged='{$reblogged}'>
 					<span class='fav tooltip icon-star {if $favourited}on{else}off{/if}' tooltip='(i18n_0054)'></span>
+					<span class='btn expandstatus tooltip' tooltip='(i18n_0404)'></span>
 				</div>
 			</div>
 		{/if}

@@ -1,12 +1,12 @@
 {
 	"manifest_version": 3,
-	"name": "Kurotodon財団版",
-	"version": "0.4.0",
-	"author": "Yakumo Saki (original kurotodon by KEN1)",
+	"name": "Kurotodon改造版",
+	"version": "0.5.0",
+	"author": "kanmnya (original kurotodon by KEN1/Kurotodon財団版 by Yakumo Saki)",
 	"description": "__MSG_manifest_description__",
 	"default_locale": "ja",
 
-	"homepage_url": "https://github.com/yakumo-saki/kurotodon/",
+	"homepage_url": "https://github.com/kam-100/kurotodon/",
 
 	"content_security_policy": {
 		"extension_pages" : "script-src 'self'; object-src 'self'"
@@ -16,7 +16,7 @@
 
 	"action": {
 		"default_icon": "images/icon128.png",
-		"default_title": "Kurotodon財団版"
+		"default_title": "Kurotodon改造版"
 	},
 
 	"icons": {

@@ -182,6 +182,20 @@ Contents.account = function( cp )
 			
 			e.stopPropagation();
 		} );
+		////////////////////////////////////////
+		// リストボタンクリック
+		////////////////////////////////////////
+		$( '#account_list' ).find( 'div.item' ).find( '.buttons' ).find( '.lists' ).click( function( e ) {
+			var account_id = $( this ).parent().parent().attr( 'account_id' );
+
+			var _cp = new CPanel( null, null, 400, 300 );
+			_cp.SetType( 'lists' );
+			_cp.SetParam( {account_id: account_id,} );
+			_cp.Start();
+
+			e.stopPropagation();
+		} );
+
 	};
 
 	////////////////////////////////////////////////////////////
@@ -284,7 +298,7 @@ Contents.account = function( cp )
 			if ( confirm( i18nGetMessage( 'i18n_0185', [g_cmn.account[account_id].display_name] ) ) )
 			{
 				// ストリーミングを止める
-				var type = new Array( 'home', 'local', 'media', 'federated', 'hashtag', 'notifications' );
+				var type = new Array( 'home', 'local', 'media', 'federated', 'hashtag', 'notifications', 'list' );
 
 				for ( var i = 0 ; i < type.length ; i++ )
 				{
