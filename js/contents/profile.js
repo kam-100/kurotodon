@@ -184,6 +184,13 @@ Contents.profile = function( cp )
 							e.stopPropagation();
 						} );
 					}
+					// トゥート一覧
+					cont.find( '.stats' ).find( '.statuses_count' ).on( 'click', function( e ) {
+					OpenUserTimeline( cp.param.account_id, res.id, res.username ,
+						res.display_name, GetInstanceFromAcct( res.acct, g_cmn.account[cp.param.account_id].instance ) );
+
+						e.stopPropagation();
+					} );
 
 					// フォロー/フォロワー一覧
 					cont.find( '.stats' ).find( '.following_count,.followers_count' ).on( 'click', function( e ) {

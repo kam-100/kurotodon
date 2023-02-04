@@ -27,7 +27,7 @@
 	<div class='stats'>
 		<div>
 			<span>(i18n_0367)</span>
-			<span>{$statuses_count}</span>
+			<span class='statuses_count'>{$statuses_count}</span>
 		</div>
 		<div>
 			<span>(i18n_0125)</span>
