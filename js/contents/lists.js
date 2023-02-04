@@ -68,8 +68,6 @@ Contents.lists = function( cp )
 
 					var account = g_cmn.account[cp.param['account_id']];
 					var open_acc = ConvertDisplayName( account.display_name, account.username );
-					_cp.SetTitle(fullname.attr( 'title' ) + '(' + open_acc + '@' + account.instance + ')', false );
-					_cp.SetIcon( 'icon-list' );
 
 					_cp.SetParam( {
 						account_id: cp.param['account_id'],
@@ -78,6 +76,7 @@ Contents.lists = function( cp )
 						id: fullname.attr( 'id' ),
 						name: fullname.attr( 'title' ),
 						reload_time: g_cmn.cmn_param['reload_time'],
+						streaming: true,
 					} );
 					_cp.Start();
 
@@ -96,8 +95,6 @@ Contents.lists = function( cp )
 					var account = g_cmn.account[cp.param['account_id']];
 					var open_acc = ConvertDisplayName( account.display_name, account.username );
 
-					_cp.SetTitle(fullname.attr( 'title' ) + '(' + open_acc + '@' + account.instance + ')', false );
-					_cp.SetIcon( 'icon-list' );
 					_cp.SetParam( {
 						account_id: cp.param['account_id'],
 						timeline_type: 'list',
@@ -105,6 +102,7 @@ Contents.lists = function( cp )
 						id: fullname.attr( 'id' ),
 						name: fullname.attr( 'title' ),
 						reload_time: g_cmn.cmn_param['reload_time'],
+						streaming: true,
 					} );
 					_cp.Start();
 

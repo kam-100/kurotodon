@@ -89,6 +89,10 @@ Contents.timeline = function( cp )
 				cp.SetIcon( 'icon-bubbles2' );
 				cont.find( '.panel_btns' ).find( '.streamctl' ).hide();
 				break;
+			case 'list':
+				cp.SetTitle(cp.param['name'] + '(' + open_acc + '@' + account.instance + ')', false );
+				cp.SetIcon( 'icon-list' );
+				break;
 		}
 	};
 
@@ -947,6 +951,9 @@ Contents.timeline = function( cp )
 							break;
 						case 'hashtag':
 							api += 'hashtag&tag=' + encodeURIComponent( cp.param['hashtag'] );
+							break;
+						case 'list':
+							api += 'list&list=' + encodeURIComponent( cp.param['id'] );
 							break;
 					}
 
