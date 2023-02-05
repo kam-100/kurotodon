@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Kurotodon改造版",
-	"version": "0.5.0",
+	"version": "0.5.11",
 	"author": "kanmnya (original kurotodon by KEN1/Kurotodon財団版 by Yakumo Saki)",
 	"description": "__MSG_manifest_description__",
 	"default_locale": "ja",
