@@ -1169,7 +1169,42 @@ function MakeTimeline( json, cp )
 			return OutputTPL( 'timeline_follow', assign );
 		}
 
-		json = json.status;
+		
+		if( json.status )
+		{
+			json = json.status;
+		}else{
+			// 内容が見えない場合見える範囲だけ表示
+	var assign = {
+		id: json.account.id,
+		status_id: json.id,
+		created_at: json.created_at,
+
+		avatar: ImageURLConvert( json.account.avatar, json.account.acct, g_cmn.account[account_id].instance ),
+		statuses_count: NumFormat( json.account.statuses_count ),
+		following: NumFormat( json.account.following_count ),
+		followers: NumFormat( json.account.followers_count ),
+
+		bt_flg: bt_flg,
+		display_name: json.account.display_name,
+		display_name_disp : ConvertDisplayName( json.account.display_name, json.account.username ),
+		username: json.account.username,
+		instance: instance,
+		acct: json.account.acct,
+		application: json.application,
+
+		date: DateConv( json.created_at, 0 ),
+		dispdate: DateConv( json.created_at, 3 ),
+		url : json.url,
+
+		favourited: json.favourited,
+		reblogged: json.reblogged,
+
+		notification: notification,
+	};
+
+	return OutputTPL( 'timeline_toot', assign );
+		}
 	}
 
 	var bt_flg = ( json.reblog );
